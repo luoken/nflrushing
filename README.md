@@ -59,8 +59,13 @@ If you have any questions regarding requirements, do not hesitate to email your 
     2. Elixir - 1.11.4
     3. Erlang/OTP 23
 
-2. To get up and running: 
-    1. `mix ecto.create`
-    2. `mix ecto.migrate`
-    3. `mix run priv/repo/seeds.exs`
-    4. `mix phx.server`
+2. Clone this repo and `cd` into directory
+
+3. To get up and running: 
+    1. `mix deps.get`
+    2. `mix ecto.create`
+    3. `mix ecto.migrate`
+    4. `mix run priv/repo/seeds.exs`
+    5. `cd assets && npm install && cd ..`
+    6. `mix phx.server`
+    7. Now head over to http://localhost:4000 and see it!
