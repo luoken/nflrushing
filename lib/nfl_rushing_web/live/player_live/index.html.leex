@@ -1,0 +1,25 @@
+<div style="display:flex; justify-content:center; padding-top: 10px"><h1>The Score</h1></div>
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, NflRushingWeb.PlayerLive.FormComponent,
+    id: @player.id || :new,
+    title: @page_title,
+    action: @live_action,
+    player: @player,
+    return_to: Routes.player_index_path(@socket, :index) %>
+<% end %>
+
+
+<div style="display:flex; justify-content:space-between">
+  <form phx-change="search" phx-submit="search" class="search-form">
+    <%= text_input :search, :search_phrase, placeholder: "Search for Player", autofocus: true, "phx-debounce": "500" %>
+  </form>
+
+  <%= live_component @socket, NflRushingWeb.PlayerLive.SortComponent %>
+  <button phx-click="save">Save</button>
+
+  <button phx-click="reset">Reset Filters</button>
+</div>
+
+
+
+<%= live_component @socket, NflRushingWeb.PlayerLive.TableComponent, players: @players %>

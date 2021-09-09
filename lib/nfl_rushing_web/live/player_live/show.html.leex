@@ -1,0 +1,14 @@
+<h1>Show Player</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, NflRushingWeb.PlayerLive.FormComponent,
+    id: @player.player,
+    title: @page_title,
+    action: @live_action,
+    player: @player,
+    return_to: Routes.player_show_path(@socket, :show, @player) %>
+<% end %>
+
+
+<span><%= live_patch "Edit", to: Routes.player_show_path(@socket, :edit, @player), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.player_index_path(@socket, :index) %></span>
